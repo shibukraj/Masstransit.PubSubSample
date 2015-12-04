@@ -3,6 +3,7 @@
     using System;
     using Contracts;
     using Log4NetIntegration.Logging;
+    using Monitoring.Introspection.Contracts;
 
     public class Program
     {
@@ -18,7 +19,12 @@
                 });
             });
 
+            ProbeResult result = bus.GetProbeResult();
+            Console.WriteLine(result.ToJsonString());
+
             var handle = bus.Start();
+
+
 
             var text = "";
 

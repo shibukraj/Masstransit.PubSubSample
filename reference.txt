@@ -3,3 +3,9 @@ http://forloop.co.uk/blog/running-masstransit-within-a-topshelf-windows-service#
 http://docs.masstransit-project.com/en/latest/usage/containers/autofac.html#using-a-module
 
 https://github.com/pdoran/BusStopFun
+
+
+https://groups.google.com/forum/#!searchin/masstransit-discuss/temperory$20queues$20created/masstransit-discuss/V4sVupqfLL4/BsoVBCxGCwkJ
+
+
+https://groups.google.com/forum/#!searchin/masstransit-discuss/temperory$20queues$20created/masstransit-discuss/OwDToIP2kp0/Nu_ns_autdEJ

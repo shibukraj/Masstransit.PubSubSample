@@ -1,30 +1,39 @@
 ﻿namespace MassTransit.Subscriber
 {
     using System;
+    using Topshelf;
+    using Topshelf.Logging;
 
-    public class SubscriberService : ISubscriberService
+    public class SubscriberService : ServiceControl
     {
-        public void Start()
+        private readonly LogWriter _log = HostLogger.Get<SubscriberService>();
+
+        private readonly IBusControl _busControl;
+        private BusHandle _busHandle;
+
+
+        public SubscriberService(IBusControl busControl)
         {
-            // AutofacBootStrapper.Builder.RegisterModule(new SubscriberBusModule());
-            // AutofacBootStrapper.SetUpAutofacContainer();
-            var bus = AutofacBootStrapper.GetInstance<IBusControl>();
-            bus.Start();
+            _busControl = busControl;
         }
 
-        public void Stop()
+        public bool Start(HostControl hostControl)
         {
-            throw new NotImplementedException();
+            _log.Info("Starting the bus .....");
+            Console.WriteLine(_busControl.GetProbeResult().ToJsonString());
+            _busHandle = _busControl.Start();
+            return true;
+
         }
 
-        public void Continue()
+        public bool Stop(HostControl hostControl)
         {
-            throw new NotImplementedException();
+            _log.Info("Stopping the service bus .....");
+            _busHandle?.Stop();
+            _busHandle?.Dispose();
+            _busControl?.Stop();
+            return true;
         }
 
-        public void Pause()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
